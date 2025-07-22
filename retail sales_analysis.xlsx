@@ -1,0 +1,66 @@
+
+----- Create Database -----
+Create Database retail_analysis_project;
+
+----- Create TABLE -----
+Drop table if exists retail_sales_analysis;
+Create TABLE retail_sales_analysis
+            (
+                transaction_id int primary key,	
+                sale_date date,	 
+                sale_time time,	
+                customer_id	int,
+                gender	varchar (50),
+                age	int,
+                category varchar (50),	
+                quantity	int,
+                price_per_unit float,	
+                cogs	float,
+                total_sale float
+            );
+
+Select COUNT(*) From retail_sales_analysis
+Select (*) From retail_sales_analysis
+
+----- Data Cleaning -----
+Select * From retail_sales_analysis
+Where transactions_id is NULL;
+
+Select * From retail_sales_analysis
+Where transaction_id is NULL
+OR sale_date is NULL
+OR sale_time is NULL
+OR gender is NULL
+OR category is NULL
+OR quantity is NULL
+OR cogs is NULL
+OR total_sale is NULL;
+
+
+----- Data Cleaning  -----
+delete From retail_sales_analysis
+Where transaction_id is NULL
+OR sale_date is NULL
+OR sale_time is NULL
+OR gender is NULL
+OR category is NULL
+OR quantity is NULL
+OR cogs is NULL
+OR total_sale is NULL;
+
+
+----- Data Exploration -----
+# 1. How many sales we have?
+SELECT 
+	COUNT(*) as total_sale
+FROM retail_sales_analysis;
+
+
+# 2. How many uniuque customers we have?
+SELECT 
+	COUNT(DISTINCT customer_id) as total_sale 
+FROM retail_sales_analysis;
+
+
+----- Data Analysis & Business Problems -----
+# Q.1 Write a SQL query to retrieve all columns for sales made on '2022-11-05
